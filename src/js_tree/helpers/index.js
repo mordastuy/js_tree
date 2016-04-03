@@ -6,4 +6,4 @@
 
 import { render } from './render_tree';
 
-exports.render = render;
+export { render };

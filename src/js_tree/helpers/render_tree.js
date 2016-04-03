@@ -8,9 +8,7 @@
  * Renders the tree view in the DOM
  */
 
-exports.render = render;
-
-function render(node, items) {
+export function render(node, items) {
     const docFragment = document.createDocumentFragment();
 
     renderNode(docFragment, items);

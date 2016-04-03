@@ -4,7 +4,7 @@
 
 'use strict';
  
-import TreeView from './js_tree';
+import { TreeView } from './js_tree';
 import items from './mocks/items';
 
 let treeView = new TreeView('tree', items);
