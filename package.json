@@ -1,0 +1,33 @@
+{
+  "name": "js_tree",
+  "version": "1.0.0",
+  "description": "Objects tree on VanillaJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --devtool eval-source-map --output-pathinfo --inline --watch-poll --content-base example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickpeleh/js_tree.git"
+  },
+  "keywords": [
+    "js_tree",
+    "jsTree"
+  ],
+  "author": "Nick Peleh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickpeleh/js_tree/issues"
+  },
+  "homepage": "https://github.com/nickpeleh/js_tree#readme",
+  "devDependencies": {
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
