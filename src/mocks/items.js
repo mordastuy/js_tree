@@ -67,7 +67,8 @@ const items = [
     },
     {
         "id"      : 11,
-        "name"    : "http://vanilla-js.com/",
+        "name"    : 'VanillaJS',
+        "url"     : "http://vanilla-js.com/",
         "icon"    : null,
         "isRoot"  : true,
         "children": []

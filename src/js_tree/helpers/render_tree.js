@@ -30,8 +30,6 @@ function renderNode($node, items) {
             $insIcon     = document.createElement('ins'),
             $a           = document.createElement('a');
 
-        const isItemNameUrl = isUrl(item.name);
-
         if (!item.isRoot) {
             $ul.style.display = 'none';
         }
@@ -47,8 +45,8 @@ function renderNode($node, items) {
 
         $a.appendChild($insIcon);
 
-        if(isItemNameUrl){
-            $a.href = item.name;
+        if(item.url && isUrl(item.url)){
+            $a.href = item.url;
             $a.target = '_blank';
         }
 
