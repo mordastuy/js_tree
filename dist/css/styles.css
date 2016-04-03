@@ -1,3 +1,9 @@
+/* Tree */
+
+.jstree-default li > a {
+    cursor: context-menu;
+}
+
 .jstree-default ins {
     background-image: url("/dist/img/sprites/d.png");
     background-repeat: no-repeat;
@@ -32,4 +38,52 @@
     height: 18px;
     margin: 0 0 0 0;
     padding: 0;
+}
+
+
+/* Context Menu */
+
+#ctx-menu {
+    display: none;
+    z-index: 100;
+}
+
+menu {
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 0px;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid;
+    background-color: white;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+menu:hover {
+    background-color: #eef;
+    font-weight: bold;
+}
+
+menu:hover > menu {
+    display: block;
+}
+
+menu > menu {
+    display: none;
+    position: relative;
+    top: -20px;
+    left: 100%;
+    width: 55px;
+}
+
+menu[title]:before {
+    content: attr(title);
+}
+
+menu:not([title]):before {
+    content: "\2630";
 }

@@ -5,6 +5,7 @@
 'use strict';
 
 import { isUrl } from './reg_exp_url';
+import contextMenuHtml from '../templates/context_menu';
 
 /**
  * Renders the tree view in the DOM
@@ -14,6 +15,7 @@ function render(node, items) {
     const $node = document.getElementById(node);
 
     renderNode($docFragment, items);
+    addContextMenu();
 
     $node.appendChild($docFragment);
 
@@ -23,7 +25,7 @@ function render(node, items) {
 function renderNode($node, items) {
     const $ul = $node.appendChild(document.createElement('ul'));
 
-    items.forEach(function (item) {
+    items.forEach(item => {
         const
             $li          = $ul.appendChild(document.createElement('li')),
             $insExpander = document.createElement('ins'),
@@ -55,7 +57,25 @@ function renderNode($node, items) {
         $li.appendChild($insExpander);
         $li.appendChild($a);
 
-        $insExpander.addEventListener('click', function (event) {
+        $li.addEventListener('contextmenu', event => {
+            event.preventDefault();
+
+            console.log(event);
+
+            const ctxMenu = document.getElementById('ctx-menu');
+            ctxMenu.style.display = 'block';
+            ctxMenu.style.left = (event.pageX - 10)+'px';
+            ctxMenu.style.top = (event.pageY - 10)+'px';
+        });
+
+        document.body.addEventListener('click',function(event){
+            var ctxMenu = document.getElementById('ctx-menu');
+            ctxMenu.style.display = '';
+            ctxMenu.style.left = '';
+            ctxMenu.style.top = '';
+        },false);
+
+        $insExpander.addEventListener('click', event => {
             const
                 $li  = event.target.parentNode,
                 $uls = $li.getElementsByTagName('ul');
@@ -75,6 +95,13 @@ function renderNode($node, items) {
             renderNode($li, item.children);
         }
     });
+}
+
+function addContextMenu(){
+    const $div = document.createElement('div');
+
+    $div.innerHTML = contextMenuHtml;
+    document.body.appendChild($div);
 }
 
 function hasChildren(item) {
