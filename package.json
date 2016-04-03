@@ -4,7 +4,7 @@
   "description": "Objects tree on VanillaJS",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --devtool eval-source-map --output-pathinfo --inline --watch-poll --content-base example"
+    "start": "webpack-dev-server --devtool eval-source-map --output-pathinfo --inline --watch-poll --content-base ./"
   },
   "repository": {
     "type": "git",

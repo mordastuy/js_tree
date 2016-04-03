@@ -4,51 +4,83 @@
 
 'use strict';
 
+import { isUrl } from './reg_exp_url';
+
 /**
  * Renders the tree view in the DOM
  */
+function render(node, items) {
+    const $docFragment = document.createDocumentFragment();
+    const $node = document.getElementById(node);
 
-export function render(node, items) {
-    const docFragment = document.createDocumentFragment();
+    renderNode($docFragment, items);
 
-    renderNode(docFragment, items);
+    $node.appendChild($docFragment);
 
-    document.getElementById(node).appendChild(docFragment);
+    $node.classList.add('jstree-default');
 }
 
-function renderNode(node, items) {
-    const ul = node.appendChild(document.createElement('ul'));
+function renderNode($node, items) {
+    const $ul = $node.appendChild(document.createElement('ul'));
 
     items.forEach(function (item) {
-        var li   = ul.appendChild(document.createElement('li')),
-            span = document.createElement('span');
+        const
+            $li          = $ul.appendChild(document.createElement('li')),
+            $insExpander = document.createElement('ins'),
+            $insIcon     = document.createElement('ins'),
+            $a           = document.createElement('a');
 
-        if(!item.isRoot){
-            ul.style.display = 'none';
+        const isItemNameUrl = isUrl(item.name);
+
+        if (!item.isRoot) {
+            $ul.style.display = 'none';
         }
 
-        span.innerText = '+ ';
-        span.setAttribute('expanded', 'off');
+        hasChildren(item)
+            ? $li.classList.add('jstree-closed')
+            : $li.classList.add('jstree-leaf');
 
-        li.appendChild(span);
-        li.appendChild(document.createTextNode(item.name));
+        $insIcon.classList.add('jstree-icon');
+        $insIcon.innerHTML = '&nbsp';
 
-        span.addEventListener('click', function (event) {
-            var uls = event.target.parentNode.getElementsByTagName('ul');
+        $insExpander.innerHTML = '&nbsp';
 
-            if (span.getAttribute('expanded') === 'off') {
-                span.innerHTML = '- ';
-                span.setAttribute('expanded', 'on');
-                uls.length && (uls[0].style.display = 'block');
-            } else {
-                span.innerHTML = '+ ';
-                span.setAttribute('expanded', 'off');
-                uls.length && (uls[0].style.display = 'none');
+        $a.appendChild($insIcon);
+
+        if(isItemNameUrl){
+            $a.href = item.name;
+            $a.target = '_blank';
+        }
+
+        $a.appendChild(document.createTextNode(item.name));
+
+        $li.appendChild($insExpander);
+        $li.appendChild($a);
+
+        $insExpander.addEventListener('click', function (event) {
+            const
+                $li  = event.target.parentNode,
+                $uls = $li.getElementsByTagName('ul');
+
+            if ($li.classList.contains('jstree-open')) {
+                $li.classList.remove('jstree-open');
+                $li.classList.add('jstree-closed');
+                $uls.length && ($uls[0].style.display = 'none');
+            } else if ($li.classList.contains('jstree-closed')) {
+                $li.classList.remove('jstree-closed');
+                $li.classList.add('jstree-open');
+                $uls.length && ($uls[0].style.display = 'block');
             }
         });
 
-        if (item.children && item.children.length) {
-            renderNode(li, item.children);
+        if (hasChildren(item)) {
+            renderNode($li, item.children);
         }
     });
 }
+
+function hasChildren(item) {
+    return item.children && item.children.length;
+}
+
+export {render};

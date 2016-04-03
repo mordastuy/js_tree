@@ -2,14 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    devtool: 'eval',
+    devtool: 'source-map',
     entry: [
         './src/index.js'
     ],
     output: {
-        path: path.join(__dirname, 'example/public'),
-        filename: 'bundle.js',
-        publicPath: '/public/'
+        path: path.join(__dirname, 'dist'),
+        filename: 'js_tree.js',
+        publicPath: '/dist/'
     },
     watch: true,
     watchOptions: {

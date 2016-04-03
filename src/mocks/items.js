@@ -33,11 +33,41 @@ const items = [
         "name"    : "Item 3",
         "icon"    : null,
         "isRoot"  : true,
-        "children": []
+        "children": [
+            {
+                "id"      : 7,
+                "name"    : "Item 7",
+                "icon"    : null,
+                "isRoot"  : false,
+                "children": [
+                    {
+                        "id"      : 9,
+                        "name"    : "Item 9",
+                        "icon"    : null,
+                        "isRoot"  : false,
+                        "children": []
+                    },
+                    {
+                        "id"      : 10,
+                        "name"    : "Item 10",
+                        "icon"    : null,
+                        "isRoot"  : false,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id"      : 8,
+                "name"    : "Item 8",
+                "icon"    : null,
+                "isRoot"  : false,
+                "children": []
+            }
+        ]
     },
     {
-        "id"      : 4,
-        "name"    : "Item 4",
+        "id"      : 11,
+        "name"    : "http://vanilla-js.com/",
         "icon"    : null,
         "isRoot"  : true,
         "children": []

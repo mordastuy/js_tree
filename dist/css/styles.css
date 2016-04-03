@@ -1,0 +1,35 @@
+.jstree-default ins {
+    background-image: url("/dist/img/sprites/d.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.jstree-default a .jstree-icon {
+    background-position: -56px -19px;
+}
+
+.jstree-default .jstree-open > ins {
+    background-position: -72px 0;
+}
+
+.jstree-default .jstree-closed > ins {
+    background-position: -54px 0;
+}
+
+.jstree-default .jstree-leaf > ins {
+    background-position: -36px 0;
+}
+
+.jstree-default ul {
+    list-style-type: none;
+    margin-left: -25px;
+}
+
+.jstree-default ins {
+    display: inline-block;
+    text-decoration: none;
+    width: 18px;
+    height: 18px;
+    margin: 0 0 0 0;
+    padding: 0;
+}
