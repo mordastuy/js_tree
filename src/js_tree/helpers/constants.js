@@ -6,4 +6,6 @@
 
 const REG_EXP_URL = /((https?|ftp)\:\/\/)([0-9A-Za-z\:\.\/\_\-\?\#\=\&]+)(\ )?/g;
 
-export { REG_EXP_URL };
+const ENTER_KEY_CODE = 13;
+
+export { REG_EXP_URL, ENTER_KEY_CODE };

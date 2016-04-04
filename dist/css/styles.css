@@ -1,6 +1,6 @@
 /* Tree */
 
-.jstree-default li > a {
+.jstree-default li > a > ins {
     cursor: context-menu;
 }
 
