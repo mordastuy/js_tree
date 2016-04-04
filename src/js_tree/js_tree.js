@@ -17,7 +17,9 @@ class TreeView {
     
     saveData(url) {
         const items = getTreeAsJson(this.node);
-        saveData(url, items);
+        saveData(url, items)
+            .then(console.log)
+            .catch(alert);
     }
 }
 

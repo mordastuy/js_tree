@@ -8,12 +8,12 @@ function getTreeAsJson(node) {
     const items = [];
     const $rootsLi = document.querySelectorAll(`#${node} > ul > li`);
 
-    pathThroughTree($rootsLi, items);
+    passThroughTree($rootsLi, items);
 
     return items;
 }
 
-function pathThroughTree($nodes, items) {
+function passThroughTree($nodes, items) {
     Array.prototype.forEach.call($nodes, $node => {
         let item = JSON.parse($node.getAttribute('jstree-leaf-info'));
         item.children = [];
@@ -21,7 +21,7 @@ function pathThroughTree($nodes, items) {
         items.push(item);
 
         if ($node.childNodes && $node.childNodes[2]) {
-            pathThroughTree($node.childNodes[2].childNodes, item.children);
+            passThroughTree($node.childNodes[2].childNodes, item.children);
         }
     });
 }

@@ -10,3 +10,5 @@ import items from './mocks/items';
 let treeView = new TreeView('tree', items);
 
 // let treeView = new TreeView('tree', '/dist/mocks/items.json');
+
+// treeView.saveData(/api/items);
