@@ -5,5 +5,6 @@
 'use strict';
 
 import { render } from './render_tree';
+import getTreeAsJson from './getTreeAsJson';
 
-export { render };
+export { render, getTreeAsJson };

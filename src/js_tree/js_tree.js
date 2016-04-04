@@ -1,4 +1,4 @@
-import {render} from './helpers';
+import { render, getTreeAsJson } from './helpers';
 import getData from './api/get_data';
 import saveData from './api/save_data';
 
@@ -15,8 +15,9 @@ class TreeView {
         }
     }
     
-    saveData(url, items) {
-        // saveData(url, items);
+    saveData(url) {
+        const items = getTreeAsJson(this.node);
+        saveData(url, items);
     }
 }
 

@@ -44,6 +44,14 @@ function appendLeaf($node, item) {
         $a           = document.createElement('a'),
         $span        = document.createElement('span');
 
+    $li.setAttribute('jstree-leaf-info', JSON.stringify({
+        id: item.id || null,
+        name: item.name || null,
+        icon: item.icon || null,
+        isRoot: item.isRoot || false,
+        url: item.url || null
+    }));
+
     if (!item.isRoot) {
         $node.style.display = 'none';
     }
@@ -162,6 +170,13 @@ function addContextMenu() {
                 if (event.keyCode === ENTER_KEY_CODE && event.target.value !== '') {
                     $a.querySelector('span').innerHTML = event.target.value;
                     $newLi.replaceChild($a, $input);
+                    $newLi.setAttribute('jstree-leaf-info', JSON.stringify({
+                        id: null,
+                        name: event.target.value,
+                        icon: null,
+                        isRoot: false,
+                        url: null
+                    }));
                 }
             });
 
