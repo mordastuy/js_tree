@@ -17,8 +17,18 @@ http://localhost:8080/
 ### HTML
 
 ```html
-<div id="tree"></div>
-<script src="/dist/js_tree.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test JSTree</title>
+    <link rel="stylesheet" href="/dist/css/styles.css">
+</head>
+<body>
+    <div id="tree"></div>
+    <script src="/dist/js_tree.js"></script>
+</body>
+</html>
 ```
 
 ### JavaScript
