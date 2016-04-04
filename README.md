@@ -2,10 +2,16 @@
 
 A stupid, simple tree view written with vanilla JS.
 
+It is able to expand/collapse any level on click, accept initial items as predefined array, accept links as a special item type - and link behave as a link (e.g. if user clicks - URL will be opened). Item may have icons and text. Text is required, icon is not required. There is ability to add item dynamically after initialization (for example on right click some popup menu appears and there is one item in menu named "Add new item"). Also there is ability to init component with data received from async AJAX call (like load data from remote server) as well as save current state of treeview  on the server via AJAX.
+Nested levels count is not limited.
+
 ## Example Usage
 
 ```bash
 npm install
+npm start
+
+http://localhost:8080/
 ```
 
 ### HTML
@@ -36,6 +42,14 @@ var tree = new TreeView('tree', [
                 "children": []
             }
         ]);
+
+or
+
+var tree = new TreeView('tree', '/dist/mocks/items.json');
+
+// Save the tree's state
+tree.saveData('/api/items');
+
 ```
 
 ## Options
