@@ -22,6 +22,14 @@ const items = [
         ]
     },
     {
+        "id"      : 13,
+        "name"    : 'GitHub',
+        "url"     : "http://github.com/",
+        "icon"    : "http://lorempixel.com/15/15/",
+        "isRoot"  : true,
+        "children": []
+    },
+    {
         "id"      : 2,
         "name"    : "Item 2",
         "icon"    : null,
@@ -69,9 +77,17 @@ const items = [
         "id"      : 11,
         "name"    : 'VanillaJS',
         "url"     : "http://vanilla-js.com/",
-        "icon"    : null,
+        "icon"    : "http://lorempixel.com/15/15/",
         "isRoot"  : true,
-        "children": []
+        "children": [
+            {
+                "id"      : 12,
+                "name"    : "Item 12",
+                "icon"    : null,
+                "isRoot"  : false,
+                "children": []
+            }
+        ]
     }
 ];
 

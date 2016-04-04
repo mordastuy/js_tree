@@ -52,14 +52,29 @@ function appendLeaf($node, item) {
         ? $li.classList.add('jstree-closed')
         : $li.classList.add('jstree-leaf');
 
-    $insIcon.classList.add('jstree-icon');
-    $insIcon.innerHTML = '&nbsp';
-
     $insExpander.innerHTML = '&nbsp';
+
+    $insIcon.innerHTML = '&nbsp';
+    $insIcon.classList.add('jstree-icon');
+
+    if (item.icon) {
+        let $img = document.createElement('img');
+
+        $img.src = item.icon;
+        $img.width = 15;
+        $img.height = 15;
+
+        $img.onload = (event) => {
+            $insIcon.innerHTML = '';
+            $insIcon.appendChild($img);
+            $insIcon.classList.remove('jstree-icon');
+        };
+    }
 
     $a.appendChild($insIcon);
 
     if (item.url && isUrl(item.url)) {
+        isUrl(item.url);
         $a.href = item.url;
         $a.target = '_blank';
     }
@@ -74,7 +89,11 @@ function appendLeaf($node, item) {
     $li.querySelector('a > ins').addEventListener('contextmenu', event => {
         event.preventDefault();
 
-        sharedData['lastItemCtxMenuCalled'] = event.target;
+        const $target = event.target.localName === 'ins'
+            ? event.target
+            : event.target.parentNode;
+
+        sharedData['lastItemCtxMenuCalled'] = $target;
 
         const ctxMenu = document.getElementById('ctx-menu');
         ctxMenu.style.display = 'block';
@@ -126,6 +145,8 @@ function addContextMenu() {
         $li.classList.remove('jstree-closed');
         $li.classList.add('jstree-open');
 
+        $li.querySelector('input').focus();
+
         function createNewLeaf($ul) {
             let $newLi = appendLeaf($ul, {}),
                 $a     = $newLi.querySelector('a'),
@@ -136,8 +157,6 @@ function addContextMenu() {
             $ul.style.display = 'block';
 
             $newLi.replaceChild($input, $a);
-
-            $newLi.querySelector('input').focus();
 
             $input.addEventListener('keyup', event => {
                 if (event.keyCode === ENTER_KEY_CODE && event.target.value !== '') {
