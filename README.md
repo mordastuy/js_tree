@@ -40,7 +40,7 @@ var tree = new TreeView('tree', [
                 "id"      : 5,
                 "name"    : "Item 5",
                 "icon"    : null,
-                "isRoot"  : false,
+                "isRoot"  : true,
                 "children": []
             },
             {
@@ -48,7 +48,7 @@ var tree = new TreeView('tree', [
                 "name"    : "Item 6",
                 "icon"    : "http://lorempixel.com/15/15/",
 				"url"     : "https://github.com/",
-                "isRoot"  : false,
+                "isRoot"  : true,
                 "children": []
             }
         ]);
