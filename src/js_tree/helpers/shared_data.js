@@ -3,8 +3,6 @@
  */
 
 'use strict';
- 
-
 
 class SharedData {
     get (prop) {
@@ -15,6 +13,7 @@ class SharedData {
         cache[prop] = data;
     }
 }
+
 const cache = {};
 const sharedData = new SharedData();
 

@@ -1,10 +1,22 @@
-import { render } from './helpers';
+import {render} from './helpers';
+import getData from './api/get_data';
+import saveData from './api/save_data';
 
 class TreeView {
-    constructor(node, items){
+    constructor(node, items) {
         this.node = node;
         this.items = items;
-        render(node, items);
+
+        if (typeof items === 'object') {
+            render(node, items);
+        } else {
+            getData(items)
+                .then(items => render(node, items));
+        }
+    }
+    
+    saveData(url, items) {
+        // saveData(url, items);
     }
 }
 
