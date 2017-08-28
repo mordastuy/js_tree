@@ -5,7 +5,7 @@
 }
 
 .jstree-default ins {
-    background-image: url("dist/img/sprites/d.png");
+    background-image: url("../img/sprites/d.png");
     background-repeat: no-repeat;
     background-color: transparent;
 }
